@@ -39,3 +39,10 @@ Como base, estoy tomando los siguientes sitios [Cómo pasar de SQL a NoSQL sin s
     
 ### Para eliminar
     db.miprueba.deleteMany( { alias: "aniuxa" } );
+    
+### Para eliminar una colección.
+    db.students.drop()
+
+### Para eliminar una base de datos.
+    use miprueba;
+    db.dropDatabase();
