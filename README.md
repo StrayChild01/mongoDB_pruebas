@@ -34,7 +34,7 @@ Como base, estoy tomando los siguientes sitios [Cómo pasar de SQL a NoSQL sin s
     )
     
 #### Para actualizar un documento o varios.
-    db.miprueba.updateOne({"_id":9}, $set:{"name": "Ana", "age": 34, "alias":"aniuxa"});
+    db.miprueba.updateOne( {_id : 5}, { $set : {"name": "Ana", "age": 34, "alias":"aniuxa"} });
     //$set se usa para actualizar varios campos.
     
 ### Para eliminar documento
