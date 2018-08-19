@@ -46,3 +46,8 @@ Como base, estoy tomando los siguientes sitios [Cómo pasar de SQL a NoSQL sin s
 ### Para eliminar una base de datos.
     use miprueba;
     db.dropDatabase();
+    
+ ### Para ejecutar un script
+ La extensión tiene que ser .js
+ 
+      mongo < my_sql.js
