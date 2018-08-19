@@ -37,7 +37,7 @@ Como base, estoy tomando los siguientes sitios [Cómo pasar de SQL a NoSQL sin s
     db.miprueba.updateOne({"_id":9}, $set:{"name": "Ana", "age": 34, "alias":"aniuxa"});
     //$set se usa para actualizar varios campos.
     
-### Para eliminar
+### Para eliminar documento
     db.miprueba.deleteMany( { alias: "aniuxa" } );
     
 ### Para eliminar una colección.
