@@ -106,6 +106,36 @@ Add Cassandra to path:
     CASSANDRA_BIN=$CASSANDRA_HOME/bin
     
     PATH=$PATH:$HOME/.local/bin:$HOME/bin:$CASSANDRA_BIN
+
+### To enable remote access
+By default, Cassandra does not enable remote access. To achieve this, we need to set it on the configuration file **cassandra.yaml**
+    
+    start_rpc: true
+    
+    #rpc_address: [node-ip]
+    #NOT BOTH
+    rpc_interface: eth0   
+    
+    #listen_address:
+    #NOT BOTH
+    listen_interface: eth0
+    
+    seed_provider:    
+    - class_name: org.apache...
+      parameters:          
+          - seeds: "[node-ip]"
+
+Another way
+
+    start_rpc: true
+    rpc_address: 0.0.0.0
+    broadcast_rpc_address: [node-ip]
+    listen_address: [node-ip]
+    seed_provider:
+      - class_name: ...
+        - seeds: "[node-ip]"
+
+
     
 ### Notes
 If you try to connect to the server with *./cqlsh* and you get an error message
