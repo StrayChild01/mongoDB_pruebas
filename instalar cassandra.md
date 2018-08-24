@@ -73,6 +73,27 @@ Test the cluster
     cqlsh> /* check it was really deleted */
     cqlsh> select * from test.test;
 
+You can also select what you have created to doublecheck:
+
+    cqlsh> select * from system_schema.keyspaces;
+    cqlsh> /* to select all keyspaces */
+    
+Output:
+
+    keyspace_name      | durable_writes | replication
+    --------------------+----------------+-------------------------------------------------------------------------------------
+           system_auth |           True | {'class': 'org.apache.cassandra.locator.SimpleStrategy', 'replication_factor': '1'}
+         system_schema |           True |                             {'class': 'org.apache.cassandra.locator.LocalStrategy'}
+             mi_prueba |           True | {'class': 'org.apache.cassandra.locator.SimpleStrategy', 'replication_factor': '1'}
+    system_distributed |           True | {'class': 'org.apache.cassandra.locator.SimpleStrategy', 'replication_factor': '3'}
+                system |           True |                             {'class': 'org.apache.cassandra.locator.LocalStrategy'}
+         system_traces |           True | {'class': 'org.apache.cassandra.locator.SimpleStrategy', 'replication_factor': '2'}
+
+To show all tables in a keyspace:
+
+    cqlsh> use my_keyspace;
+    cqlsh> describe tables;   
+
 ### Add Cassandra binaries to PATH
 
 Edit the profile:
