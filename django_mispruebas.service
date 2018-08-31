@@ -1,0 +1,19 @@
+# En raspi, poner en /etc/systemd/system
+# chmod 755 django_mispruebas.service
+
+[Unit]
+Description=Unit for starting a basic Django app 
+
+[Service]
+Type=simple
+PIDFile=/run/django_mispruebas.pid
+Restart=always
+RestartSec=10
+WorkingDirectory=/var/www/hello
+ExecStart=/usr/bin/python3 /home/pi/mispruebas/manage.py runserver 0.0.0.0:8000
+User=pi
+Group=pi
+WorkingDirectory=/home/pi/mispruebas
+
+[Install]
+WantedBy=multi-user.target
