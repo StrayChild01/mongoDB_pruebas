@@ -5,7 +5,7 @@ Para instalar el kernel, primero se tienen que satisfacer las dependencias de li
 En Ubuntu:
 ```Shell
 sudo apt-get install libxml2-dev openssl libssl-dev libcurl4-openssl-dev curl #devtools
-sudo apt-get install libcairo2-dev libunwind jupyter-client #JuniperKernel
+sudo apt-get install libcairo2-dev libunwind-dev jupyter-client #JuniperKernel
 ```
 
 En CentOS/RH:
