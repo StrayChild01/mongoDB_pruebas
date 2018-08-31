@@ -1,0 +1,34 @@
+# En raspi, poner en /etc/systemd/system
+# chmod 755 jupyter.service
+# Para iniciar:
+#     sudo systemctl start jupyter.service
+# Para revisar estado:
+#     sudo systemctl status jupyter.service
+# Para habilitar al inicio:
+#     sudo systemctl enable jupyter.service
+# Para deshabilitar al inicio:
+#     sudo systemctl disable jupyter.service
+
+############################################
+
+# Archivo tomado de:
+#     https://gist.github.com/whophil/5a2eab328d2f8c16bb31c9ceaf23164f
+# Para configuración de servicio en Raspi, ver: 
+#     https://www.raspberrypi.org/documentation/linux/usage/systemd.md
+
+[Unit]
+Description=Jupyter Notebook
+
+[Service]
+Type=simple
+PIDFile=/run/jupyter.pid
+ExecStart=/usr/local/bin/jupyter notebook --config=/home/pi/.jupyter/jupyter_notebook_config.py
+User=pi
+Group=pi
+WorkingDirectory=/home/pi/notebooks
+Restart=always
+RestartSec=10
+#KillMode=mixed
+
+[Install]
+WantedBy=multi-user.target
