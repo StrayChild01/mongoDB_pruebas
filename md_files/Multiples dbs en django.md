@@ -58,3 +58,5 @@ from cassandra.cqlengine.models import Model
 ```Python
 python manage.py sync_cassandra
 ```
+
+Documento realizado con información de [How to Install and Use Cassandra on Django](https://www.slothparadise.com/how-to-install-and-use-cassandra-on-django/)
