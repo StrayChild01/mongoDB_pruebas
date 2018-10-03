@@ -15,4 +15,5 @@ pp = (gp
       + ggplot2.labs(title="mtcars", x='wt', y='mpg'))
 
 pp.plot()
-R("dev.copy(png,'/tmp/out.png')")
+#R("dev.copy(png,'img/out.png')")
+R.ggsave("img/out.png")
