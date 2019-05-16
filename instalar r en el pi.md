@@ -21,3 +21,13 @@ rm -rf R-3.6.0*
 exit
 cd
 ```
+La información la obtuve de [este post de RStudio Community:](https://community.rstudio.com/t/setting-up-your-own-shiny-server-rstudio-server-on-a-raspberry-pi-3b/18982/34)
+
+En caso de que se necesite eliminar los programas que se instalaron con la versión anterior, se hace lo siguiente:
+
+```R
+installed_pkg <- as.data.frame(installed.packages())
+# 3.3.3 is the latest version available in raspbian.
+unstable_pkg <- rownames(installed_pkg[installed_pkg$Built=="3.3.3",])
+remove.packages(unstable_pkg)
+```
