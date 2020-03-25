@@ -9,3 +9,5 @@ Bases de datos usadas:
 - Cassandra
 
  h<sub>&theta;</sub>(x) = &theta;<sub>o</sub> x + &theta;<sub>1</sub>x
+
+&Beta;<sub>1</sub>
