@@ -35,7 +35,11 @@ If running in normal mode then check all datasources for new data
     (Note: we use >= instead of > in case the version was updated)"
    - Check to see if we have already tried to process this version
     ```sql
-        Select count(*) from BOW.DATASOURCE where datasource = 'WAF_SUPDLY' and version=&version_id
+        SELECT count(*)
+        FROM BOW.DATASOURCE
+        WHERE datasource = 'WAF_SUPDLY'
+         AND version = 'version_id'
+
     ```
    - If count>0 then Write an informational message to the log 'This version &version_id already exists but the source has been updated re-processing'
    - Write an informational message to load showing the datasource, version, and runlist='SUPDLY'
@@ -114,8 +118,12 @@ If running in normal mode then check all datasources for new data
     ```
 
     ```sql
-        SELECT LASTROWTS from BOWCTRL.LASTRUN
-        where schemaname = 'BOWXXXRAW' and tbname = 'DEMPEG' and process = 'WAFSUPDMD'
+        SELECT LASTROWTS
+        FROM BOWCTRL.LASTRUN
+        WHERE schemaname = 'BOWXXXRAW'
+         AND tbname = 'DEMPEG'
+         AND process = 'WAFSUPDMD'
+
     ```
 
     - Note: XXX='CPE', 'TFF', or 'SSP'"
@@ -134,7 +142,7 @@ If running in normal mode then check all datasources for new data
     ```
    - Else
    - If QUAD2 then set RUNLIST = "CAP,FUN,OPP,RAW,UNL"
-   - Write an informational message to the log showing the datasource, version, and runs to be processed
+    - Write an informational message to the log showing the datasource, version, and runs to be processed
    - Call datastage with datasource, version, and runlist to process
    - If Datastage completes successfully then
      - Call Blend Create/Update processing with Datasource, version_id, and runs to be processed
@@ -142,7 +150,8 @@ If running in normal mode then check all datasources for new data
      - Else no new event for this datasource - double check this is consistent with the BOWCTRL table
    - Double check this is consistent with the BOWCTRL table
     ```sql
-        SELECT max (LAST_UPDATE)  as MAX_LAST_UPDATE from BOWXXRAW.DEMPEG
+        SELECT max(LAST_UPDATE) AS MAX_LAST_UPDATE
+        FROM BOWXXRAW.DEMPEG
     ```
     ```sql
         SELECT LASTROWTS
@@ -162,12 +171,15 @@ If running in force mode then
 - If datasource = 'WAF_SUPDLY' then
   - If version parameter is supplied then check that this is a valid version
       ```sql
-          Select count(*) from bowdly.gf_orders where version_id = &version_id
+          SELECT count(*)
+          FROM bowdly.gf_orders
+          WHERE version_id = 'version_id'
       ```
   - If count=0 then exit with error message indicating version is not valid
   - Else get the current version
       ```sql
-          Select max(version_id) from bowdly.gf_orders
+          SELECT max(version_id)
+          FROM bowdly.gf_orders
       ```
   - Write an informational message to load showing the datasource, version, and runlist='SUPDLY'
   - Call datastage with datasource, version, and runlist ='SUPDLY'
