@@ -48,7 +48,6 @@ If running in normal mode then check all datasources for new data
    - If Datastage does not complete successfully then send an error email
    - Else no new supply daily data to process
         Write an informational message to log that there is no new data for this datasource.  (this is most common)
-<hr>
 
  - Process datasources 'CPE_WAF_QUAD2', 'CPE_WAF_SSP', 'CPE_WAF_TFF'
   
